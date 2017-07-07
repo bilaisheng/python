@@ -7,16 +7,16 @@ print(miles)
 print(name)
 
 
-a,b,c,d = 100,10.0,True,2-4j;
-print(type(a));
-print(type(b));
-print(type(c));
-print(type(d));
+a, b, c, d = 100, 10.0, True, 2-4j
+print(type(a))
+print(type(b))
+print(type(c))
+print(type(d))
 
-print( isinstance(a,int));
-print( isinstance(b,float));
-print( isinstance(c,bool));
-print( isinstance(d,complex));
+print(isinstance(a, int))
+print(isinstance(b, float))
+print(isinstance(c, bool))
+print(isinstance(d, complex))
 
 # isinstance 和 type 的区别在于：
 class A:
