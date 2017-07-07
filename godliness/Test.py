@@ -1,1 +1,2 @@
-！
+
+print("test github")
