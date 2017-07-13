@@ -6,7 +6,6 @@
 while True:
     # 获取用户输入的数字
     num = int(input("请输入一个数字："))
-
     # 初始化sum
     sum = 0
     # 指数

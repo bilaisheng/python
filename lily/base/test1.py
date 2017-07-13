@@ -5,9 +5,9 @@ from urllib.parse import urljoin
 import urllib.robotparser
 import datetime
 import urllib.request
-import time
 from time import sleep
 import queue
+
 
 def get_links(html):
     website_regex = re.compile('<a[^>]+href=["\'](.*?)["\']',re.IGNORECASE)
@@ -60,8 +60,10 @@ def get_robots(url):
     rp.read()
     return rp
 
+
 def same_domain(url1,url2):
     return urllib.request.urlparse(url1).netloc ==urllib.request.urlparse(url2).netloc
+
 
 def normalize(seed_url,link):
     link,_ = urllib.urlparse.defrag(link)
