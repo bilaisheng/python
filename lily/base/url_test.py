@@ -1,4 +1,12 @@
+# !/usr/bin/python3
+# -*- coding: UTF-8 -*-
+
+# Filename : url_test.py
+# Author by : Lily
+# 知识点：type();dir();headers();geturl();info();getcode();read()
+
 import urllib.request
+
 html = urllib.request.urlopen('https://taobao.com')
 print(type(html))
 print(dir(html))

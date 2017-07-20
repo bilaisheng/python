@@ -1,8 +1,8 @@
 # !/usr/bin/python3
 # -*- coding: UTF-8 -*-
 
-# Filename : Hello_world.py
-# print()的应用
+# Filename : print_test.py
+# 应用知识点：print();input();float()
 
 # 用户输入第一个数字：
 num1 = input("请输入第一个数字：")

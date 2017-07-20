@@ -1,6 +1,7 @@
 #!/usr/bin/python3
 # Filename : write_open.py
 # Author by : Lily
+# 知识点：open();write()
 
 # 写文件
 with open("test.txt","wt") as out_file:

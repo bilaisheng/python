@@ -2,8 +2,8 @@
 # Filename : Ascii_change
 # Author by : Lily
 """
-ASCII--》字符：chr()
-字符--》ASCII: ord()
+ASCII--》字符：chr()   97-->a
+字符--》ASCII: ord()   a-->97
 """
 # 用户输入字符
 c = input("请输入一个字符：")
