@@ -3,8 +3,8 @@
 # 用quit来代替回车结束程序
 
 
-def file_write(file_n):
-    f = open(file_n, 'w', encoding='utf-8')
+def file_write(file_name):
+    f = open(file_name, 'w', encoding='utf-8')
     print('请输入内容【单独输入\'quit\'保存退出】')
 
     while True:
@@ -15,5 +15,5 @@ def file_write(file_n):
             break
     f.close()
 
-file_n = input('请输入文件名：')
-file_write(file_n)
+my_file_name = input('请输入文件名：')
+file_write(my_file_name)
