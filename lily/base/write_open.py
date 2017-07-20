@@ -4,7 +4,7 @@
 # 知识点：open();write()
 
 # 写文件
-with open("test.txt","wt") as out_file:
+with open("test.txt", "wt") as out_file:
     out_file.write("该文本会写入到文件中\n看到我了吧！")
 
 # Read a file

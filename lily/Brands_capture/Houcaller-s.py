@@ -31,7 +31,7 @@ pro = re.findall('value="(.*?)">',str(op))
 store_ids = []
 tittle = []
 n=0
-f = codecs.open('haokelai.csv','w','utf-8')
+f = codecs.open('haokelai.csv', 'w', 'utf-8')
 # 根据获取的省份作为get参数，打开省份页面，获取store id的信息
 for s_id in pro:
     url_pro = "http://www.houcaller.com/hklhome/crm/getOrgs.jspx?province=" + urllib.request.quote(s_id)

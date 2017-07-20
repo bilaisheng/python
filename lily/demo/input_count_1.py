@@ -4,7 +4,7 @@
 
 # 判断输入的字符串中有几个数字，字母，汉字和空格
 # 用到知识点：while;for;if...elif...else;.isdigit();.isalpha();.isspace();
-
+import string
 while True:
     # 初始化5个变量
     num, alpha, ch_alpha, blank, other = 0, 0, 0, 0, 0
@@ -16,7 +16,7 @@ while True:
         if character.isdigit():
             num += 1
         # 判断该字符是否是英文字符，若是，alpha加1
-        elif 'a' <= character <= 'z' or 'A' <= character <= 'Z':
+        elif character in string.ascii_letters:
             alpha += 1
         # 判断该字符是否是中文，若是，ch_alpha加1
         elif character.isalpha():
