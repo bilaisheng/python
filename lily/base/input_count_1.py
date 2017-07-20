@@ -1,7 +1,6 @@
 #!/usr/bin/python3
 
-# 使用while循环使用该方法
-
+# 判断输入的字符串中有几个数字，字母，汉字和空格
 
 while True:
     # 初始化5个变量
@@ -15,7 +14,7 @@ while True:
             num += 1
         # 判断该字符是否是英文字符，若是，alpha加1
         elif character.lower() or character.upper():
-            # 'a'<character<'z' or 'A'<character<'Z':  #in string.ascii_letters:
+            # 'a'<character<'z' or 'A'<character<'Z':  # in string.ascii_letters:
             alpha += 1
         # 判断该字符是否是中文，若是，ch_alpha加1
         elif character.isalpha():
