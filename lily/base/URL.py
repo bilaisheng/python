@@ -1,6 +1,6 @@
 import urllib.request
 html = urllib.request.urlopen('https://taobao.com')
-print (type(html))
+print(type(html))
 print(dir(html))
 print(html.geturl())
 # 返回url的response信息

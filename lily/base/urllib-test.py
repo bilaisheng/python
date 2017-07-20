@@ -1,4 +1,4 @@
-import urllib.parse
+
 import urllib.request
 url = 'http://www.someserver.com/cgi-bin/register.cgi'
 values = {'name' : 'Michael Foord', 'location' : 'Northampton', 'language' : 'Python' }
