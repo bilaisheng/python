@@ -5,14 +5,16 @@
 locator：http://www.chinalegoland.com/legomap/index.php?openid=o0TWYswA0c3TB-FGTGATBgNT9bKI&key=LEGO_2016ACT001&sign=5b41fd90a6dadb63360f379374126e1a
 storeInformation:http://www.chinalegoland.com/legomap/api/getnearby.php?lng=114.02597366&lat=22.54605355&city=%E5%A4%A7%E8%BF%9E
 """
-import time
+
 import urllib.request
 import re
 from bs4 import BeautifulSoup
 import json
 import codecs
 
-#定义获取打开链接，获取页面内容的方法
+# 定义获取打开链接，获取页面内容的方法
+
+
 def getHtml(url):
     page = urllib.request.urlopen(url)
     html = page.read()
@@ -20,7 +22,7 @@ def getHtml(url):
 
 # 打开主页面
 locator = getHtml("http://www.chinalegoland.com/legomap/index.php?openid=o0TWYswA0c3TB-FGTGATBgNT9bKI&key=LEGO_2016ACT001&sign=5b41fd90a6dadb63360f379374126e1a")
-#在页面中找到省份的下拉列表，并获取省份
+# 在页面中找到省份的下拉列表，并获取省份
 soup = BeautifulSoup(locator,'html.parser')
 pro_sel = soup.find('select',attrs={'id':'city_select'})
 op = pro_sel.find_all('option')
@@ -52,7 +54,7 @@ for st_i in pro:
                 #             f.write('%s,'%t)
                 #         f.write('\n')
                 #         n=n+1
-     # 获取键值并写入,方法一
+    # 获取键值并写入,方法一
     # for k, v in s_json.items():
     #     f.write('%s,'%str(v).replace(',','，'))
     # f.write('\n')

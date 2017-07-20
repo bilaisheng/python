@@ -15,9 +15,9 @@ json_data = [{"id":"216","city":"\u4e1c\u839e\u5e02","county":"\u5e02\u3001\u53b
 def muti_json(file_name,json_data):
     # 打开CSV
     f = open(file_name,'w',encoding='utf-8')
-    #定义tittle
+    # 定义tittle
     tittle = []
-    # 遍历所有的键值对，取到所有不重复的键（做titlle）
+    # 遍历所有的键值对，取到所有不重复的键（做 title）
     for l in json_data:
         for k in l:
             if k not in tittle:
@@ -35,7 +35,7 @@ def muti_json(file_name,json_data):
         data.append(' ')
     # 遍历每一个键值对，将值写入表格
     for l in json_data:
-        # 按照titlle的顺序把velue存到data
+        # 按照title的顺序把value存到data
         for k, v in l.items():
             data[tittle.index(k)] = v
         # 将data写 入表格
