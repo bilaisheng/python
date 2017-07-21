@@ -14,4 +14,5 @@ num2 = input("请输入第二个数字：")
 sum_all = float(num1) + float(num2)
 
 # 显示计算结果
-print("{0} + {1} = {2}".format(num1, num2, sum))
+print("{0} + {1} = {2}".format(num1, num2, sum_all))
+
