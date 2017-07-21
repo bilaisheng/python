@@ -30,5 +30,5 @@ while True:
         else:
             other += 1
 
-    # 输出结果
-    print("你输入的内容包含数字{0}个，字母{1}个，汉字{2}个，空格{3}个，其他字符{4}个".format(num, alpha, ch_alpha, blank, other))
+# 输出结果
+print("你输入的内容包含数字{0}个，字母{1}个，汉字{2}个，空格{3}个，其他字符{4}个".format(num, alpha, ch_alpha, blank, other))
