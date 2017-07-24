@@ -33,9 +33,8 @@ request = urllib.request.Request(url)
 
 request.add_header("User-Agent", user_agent)
 
-# 若不增加ssl验证 程序执行出错
+# 若不增加ssl验证(context=context) 程序执行出错
 response = urllib.request.urlopen(request, context=context)
-
 
 data = response.read()
 
