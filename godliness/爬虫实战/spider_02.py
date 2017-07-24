@@ -5,6 +5,15 @@
     所以,我们需要将爬虫程序发出的请求伪装成浏览器正规军
     具体时间:自定义网页请求报文头
 
+    Python 升级到 2.7.9 之后引入了一个新特性，当使用urllib.urlopen打开一个 https 链接时，会验证一次 SSL 证书。
+    解决方案：
+
+    1.使用ssl创建未经验证的上下文，在urlopen中传入上下文参数
+    import ssl
+    import urllib2
+
+    context = ssl._create_unverified_context()
+    print urllib2.urlopen("https://www.111cn.net/", context=context).read()
 '''
 
 # 实例二: 依然爬取豆瓣 采用伪装浏览器的方式
