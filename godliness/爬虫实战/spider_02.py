@@ -15,7 +15,7 @@ import urllib.request
 # 定义保存函数
 def save_file(data):
     # 此处自行创建目录 , 文件
-    path = "F:/Spider/02_douban.out"
+    path = "F:/Spider/douban.html"
     f = open(path, 'wb')
     f.write(data)
     f.close()
