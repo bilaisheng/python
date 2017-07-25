@@ -73,19 +73,18 @@ opener = getOpener(headers)
 
 # post 数据接收和处理的页面(向这个页面发送构造的Post数据)
 url += 'login/email'
-username = '******@qq.com'
-password = '******'
+username = '878799579@qq.com'
+password = 'bls878799579+'
 
 # 分析构造post数据
 postDict = {
     '_xsrf': _xsrf,
     'email': username,
-    'password': password,
-    'remember_me': 'true'
+    'password': password
 }
 
 # 给post数据编码
-postData = urllib.parse.urlencode(postDict).encode(encoding='utf-8')
+postData = urllib.parse.urlencode(postDict).encode('utf-8')
 
 # 构造请求
 response = opener.open(url, postData)

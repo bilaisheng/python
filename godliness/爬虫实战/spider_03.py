@@ -5,9 +5,7 @@
 '''
 
 import urllib.request
-import socket
 import re
-import sys
 import ssl
 import os
 
