@@ -78,6 +78,9 @@ def download4(url, user_agent='test', num_retries=2):
                 html4 = download4(url, user_agent, num_retries-1)
     return html4
 
+# 下载网页内容，版本4
+# 设置用户代理IP,proxy,代理IP;data是用户可输入的参数
+
 
 def download5(url, proxy=None, user_agent='test', num_retries=2, data=None):
     print("download5...", url)
@@ -110,7 +113,7 @@ def download5(url, proxy=None, user_agent='test', num_retries=2, data=None):
     return html5
 
 # 百度首页
-url2 = 'http://www.kuaidaili.com/free/'
+url2 = 'http://www.baidu.com'
 
 # 错误页面 code=500
 url1 = 'http://httpstat.us/500'
