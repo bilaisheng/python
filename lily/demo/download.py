@@ -57,6 +57,9 @@ def download3(url, num_retries=2):
 url2 = 'http://www.baidu.com'
 url1 = 'http://httpstat.us/500'
 html = download3(url2)
+
+
+
 print(html)
 
 
