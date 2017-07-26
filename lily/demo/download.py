@@ -118,6 +118,11 @@ url2 = 'http://www.baidu.com'
 # 错误页面 code=500
 url1 = 'http://httpstat.us/500'
 
+html = download3(url2)
+
+
+
+print(html)
 # 下载百度首页，设置用户代理为360浏览器
 html = download4(url2, user_agent='"360":"User-Agent: Mozilla/4.0 (compatible; MS IE 7.0;Window NT 5.1;360SE)"')
 
