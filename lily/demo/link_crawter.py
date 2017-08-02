@@ -13,6 +13,7 @@ from download_quote import download5
 import re
 import urllib.request
 import urllib.robotparser
+from bs4 import BeautifulSoup
 # 获取网站中的所有链接，从所有a标签中获取href属性中的内容
 
 
@@ -242,7 +243,7 @@ def link_crawler5(seed_url, link_regex, delay=-1, user_agent='Test'):
 # 排除主链接不一致的链接
 
 
-def link_crawler6(seed_url, link_regex, proxy=None, max_depth=-1, delay=-1, user_agent='Test',num_retries=2):
+def link_crawler6(seed_url, link_regex, max_depth=-1, delay=-1, user_agent='Test',num_retries=2):
     # 将seed_url赋值给craw_queue
     # craw_queue = [seed_url]
     # deque双向队列，效率比普通对列高
@@ -254,37 +255,44 @@ def link_crawler6(seed_url, link_regex, proxy=None, max_depth=-1, delay=-1, user
     # 创建Throttle的一个实例
     throttle = Throttle(delay)
     # 当craw_queue不为空时，执行循环
+
     while craw_queue:
         url6 = craw_queue.pop()
         # 访问一个robots.txt为空的时，返回一直True
+
         if rp.can_fetch(user_agent, url6):
             throttle.wait(url6)
             # download url5 的网页内容
-            html = download5(url6,  proxy=None, user_agent=user_agent, num_retries=num_retries).decode('utf-8')
+            html = download5(url6, user_agent=user_agent, num_retries=num_retries).decode('utf-8')
             depth = seen[url6]
+            links = []
             if depth != max_depth:
+                if link_regex:
+                    links.extend(link for link in get_link(html) if re.match(link_regex,link))
+                    # links里面都是相对链接/places/default/(index|view)
                 # 在html页面中获取所有的链接
                 for link in get_link(html):
                     # 对链接进行优化
                     link = normalize(seed_url, link)
                     # 判读link是否符合link_regex正则表达式
-                    if re.match(link_regex, link):
-                        # 拼接获取到到link 和seec_url得到完整的链接地址
-                        link = urllib.parse.urljoin(seed_url, link)
-                        # 判断link是否在seen中
-                        if link not in seen:
-                            # 在seen中添加一个元素link
-                            seen[link] = depth + 1
-                            if same_domain(seed_url, link):
-                                # 在craw_queue中添加link
-                                craw_queue.append(link)
-                            else:
-                                print(seed_url, link)
+                    # if re.match(link_regex, link):
+
+                    # 拼接获取到到link 和seec_url得到完整的链接地址
+                    # link = urllib.parse.urljoin(seed_url, link)
+                    # 判断link是否在seen中
+                    if link not in seen:
+                        # 在seen中添加一个元素link
+                        seen[link] = depth + 1
+                        if same_domain(seed_url, link):
+                            # 在craw_queue中添加link
+                            craw_queue.append(link)
+                        else:
+                            print(seed_url, link)
         else:
             # 如果判读该网页robots不能爬取，则打印 blocked by robots.txt
             print('blocked by robots.txt', url6)
 url = 'http://www.baidu.com'
-url1 = 'http://example.webscraping.com'
-# html = download5(url1).decode("utf-8")
-# links = get_link(html) /places/default/(index|view)
+url1 = 'http://example.webscraping.com/places/default/view/Afghanistan-1'
+html = download5(url1).decode("utf-8")
 link_crawler6(url1, '/places/default/(index|view)', delay=2, max_depth=2)
+
