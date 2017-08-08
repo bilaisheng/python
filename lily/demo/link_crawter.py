@@ -13,10 +13,50 @@ from download_quote import download5
 import re
 import urllib.request
 import urllib.robotparser
-from bs4 import BeautifulSoup
+import lxml.html
+import csv
+
+
+Field = ('area', 'population', 'iso', 'country', 'capital', 'continent', 'tld',
+          'currency_code', 'currency_name', 'phone', 'postal_code_format',
+          'postal_code_regex', 'languages', 'neighbours')
+
+
+def get_scrape(url, html):
+    # url 用来在下载的时候判断是否是国家页面
+    # index view
+    # places/default/view
+    if re.search('/places/default/view', url):
+        tree = lxml.html.fromstring(html)
+        res = [tree.cssselect('table > tr#places_{}__row > td.w2p_fw'.format(field))[0].text_content() for field in Field]
+        print(res)
+
+
+class ScrapCallback:
+    def __init__(self):
+        # __init__构造器 对数据进行初始化
+        # ScrapCallback类名，经常是要实例化，scrapcallback = ScrapCallback()
+        # scrapcallback 示例会 保存数据状态
+        self.writer = csv.writer(open('countries.csv', 'w'))
+        self.fields = ('area', 'population', 'iso', 'country', 'capital', 'continent', 'tld',
+          'currency_code', 'currency_name', 'phone', 'postal_code_format',
+          'postal_code_regex', 'languages', 'neighbours')
+        self.writer.writerow(self.fields)
+
+    def __call__(self, url, html):
+        if re.search('/places/default/view/', url):
+            tree = lxml.html.fromstring(html)
+            row = []
+            for field in self.fields:
+                row.append(tree.cssselect('table > tr#places_{}__row > td.w2p_fw'.format(field))[0].text_content())
+                print(row)
+                # 通过逗号来隔开的数据去一行行向我们的csv文件中写
+                # ['431 square kilometres', '285,653', 'BB', 'Barbados', 'Bridgetown', 'NA',
+                # '.bb', 'BBD', 'Dollar', '+1-246', 'BB#####', '^(?:BB)*(\\d{5})$', 'en-BB', ' ']
+            self.writer.writerow(row)
+
+
 # 获取网站中的所有链接，从所有a标签中获取href属性中的内容
-
-
 def get_link(html):
     # 提取所有a标签中获取href属性中的内容
     webpage_regex = re.compile('<a[^>]+href=["\'](.*?)["\']', re.IGNORECASE)
@@ -49,8 +89,6 @@ def same_domain(url1, url2):
 
 # 提取所有有用的链接；seed_url网页url;link_regex链接匹配的正则表达式
 # 如果获取的链接不是全的链接，将会报错
-
-
 def link_crawler(seed_url, link_regex):
     # 将网页链接传给craw_queue
     craw_queue = [seed_url]
@@ -67,11 +105,10 @@ def link_crawler(seed_url, link_regex):
                 # 在craw_queue中添加link
                 craw_queue.append(link)
 
+
 # 提取所有有用的链接；seed_url网页url;link_regex链接匹配的正则表达式
 # 获取的链接都是缺少主链接的子链接，需要合并成完整的链接
 # 如果有链接是重复的会访问多次
-
-
 def link_crawler2(seed_url, link_regex):
     # 将网页链接传递给craw_queue
     craw_queue = [seed_url]
@@ -94,7 +131,6 @@ def link_crawler2(seed_url, link_regex):
 # 提取所有有用的链接；seed_url网页url;link_regex链接匹配的正则表达式
 # 获取的链接都是缺少主链接的子链接，需要合并成完整的链接
 # 如果有链接是重复的会被过滤掉
-
 def link_crawler3(seed_url, link_regex):
     # 将网页链接传递给craw_queue
     craw_queue = [seed_url]
@@ -125,8 +161,6 @@ def link_crawler3(seed_url, link_regex):
 # 如果有链接是重复的会被过滤掉
 # 将robots分析功能添加到代码中
 # robots文件中表示了你的用户代理可以访问哪些路由
-
-
 def link_crawler4(seed_url, link_regex, user_agent='Test'):
     # 将seed_url赋值给craw_queue
     craw_queue = [seed_url]
@@ -241,9 +275,7 @@ def link_crawler5(seed_url, link_regex, delay=-1, user_agent='Test'):
 # 对下载限速
 # 对抓取页面的深度进行限制,避免爬虫进入爬虫陷阱
 # 排除主链接不一致的链接
-
-
-def link_crawler6(seed_url, link_regex, max_depth=-1, delay=-1, user_agent='Test',num_retries=2):
+def link_crawler6(seed_url, link_regex, max_depth=-1, delay=-1, user_agent='Test', num_retries=2, scrape_callback=None):
     # 将seed_url赋值给craw_queue
     # craw_queue = [seed_url]
     # deque双向队列，效率比普通对列高
@@ -264,6 +296,9 @@ def link_crawler6(seed_url, link_regex, max_depth=-1, delay=-1, user_agent='Test
             throttle.wait(url6)
             # download url5 的网页内容
             html = download5(url6, user_agent=user_agent, num_retries=num_retries).decode('utf-8')
+            # 数据抓取在这里
+            if scrape_callback:
+                scrape_callback(url6, html)
             depth = seen[url6]
             links = []
             if depth != max_depth:
@@ -276,7 +311,6 @@ def link_crawler6(seed_url, link_regex, max_depth=-1, delay=-1, user_agent='Test
                     link = normalize(seed_url, link)
                     # 判读link是否符合link_regex正则表达式
                     # if re.match(link_regex, link):
-
                     # 拼接获取到到link 和seec_url得到完整的链接地址
                     # link = urllib.parse.urljoin(seed_url, link)
                     # 判断link是否在seen中
@@ -292,7 +326,8 @@ def link_crawler6(seed_url, link_regex, max_depth=-1, delay=-1, user_agent='Test
             # 如果判读该网页robots不能爬取，则打印 blocked by robots.txt
             print('blocked by robots.txt', url6)
 url = 'http://www.baidu.com'
-url1 = 'http://example.webscraping.com/places/default/view/Afghanistan-1'
-html = download5(url1).decode("utf-8")
-link_crawler6(url1, '/places/default/(index|view)', delay=2, max_depth=2)
+url1 = 'http://example.webscraping.com/'
+# html = download5(url1).decode("utf-8")
+link_crawler6(url1, '/places/default/(index|view)', delay=2, scrape_callback=ScrapCallback())
+
 
