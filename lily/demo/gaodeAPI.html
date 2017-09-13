@@ -1,0 +1,117 @@
+<!doctype html>
+<html>
+<head>
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="initial-scale=1.0, user-scalable=no, width=device-width">
+    <title>公交站点查询</title>
+    <link rel="stylesheet" href="http://cache.amap.com/lbs/static/main1119a.css"/>
+    <script type="text/javascript" src="http://webapi.amap.com/maps?v=1.3&key=01c19cd5901005185020fa887a262dd0&plugin=AMap.StationSearch"></script>
+
+</head>
+<body>
+<div id="container"></div>
+<div id="tip"></div>
+  <div id="tip1"></div>
+   <div id="tip2"></div>
+   <div id="tip3"></div>
+   <div id="tip4"></div>
+   <div id="tip5"></div>
+  <div id="tip6"></div>
+    <div id="tip7"></div>
+    <div id="tip8"></div>
+    <div id="tip9"></div>
+    <div id="tip10"></div>
+    <div id="tip11"></div>
+     <div id="tip12"></div>
+<script type="text/javascript">
+    var map = new AMap.Map("container", {
+        resizeEnable: true,
+        center: [116.397428, 39.90923],//地图中心点
+        zoom: 13 //地图显示的缩放级别
+    });
+	stationSearch();
+    /*公交站点查询*/
+
+     function stationSearch() {
+            //实例化公交站点查询类
+        var station = new AMap.StationSearch({
+            pageIndex: 1, //页码
+            pageSize: 100, //单页显示结果条数
+            city: '0755'   //确定搜索城市
+        });
+        station.search('益', function(status, result) {
+
+            if (status === 'complete' && result.info === 'OK') {
+                stationSearch_CallBack(result);
+
+                var tab="<table border='1' bordercolor='blue' width='200' height='10'>";
+                for(i=0;i<result.stationInfo.length;i++){
+                    tab+="<tr>";
+                    tab+="<td>"+result.stationInfo[i].id+"</td>";
+                    tab+="<td>"+result.stationInfo[i].name+"</td>";
+                    tab+="<td>"+result.stationInfo[i].location+"</td>";
+                    tab+="<td>"+result.stationInfo[i].adcode+"</td>";
+                    tab+="<td>"+result.stationInfo[i].citycode+"</td>";
+//                    tab+="<td>"+result.stationInfo[i].buslines+"</td>";
+                    tab+="<td>";
+//                    document.getElementById('tip2').innerHTML =result.stationInfo[i].name;
+//                    document.getElementById('tip3').innerHTML =result.stationInfo[i].location;
+//                    document.getElementById('tip4').innerHTML =result.stationInfo[i].adcode;
+//                    document.getElementById('tip5').innerHTML =result.stationInfo[i].citycode;
+//                    document.getElementById('tip6').innerHTML =result.stationInfo[i].buslines;
+//
+                    if (result.stationInfo[i].buslines.length !=0){
+                        for(j=0;j<result.stationInfo[i].buslines.length;j++){
+                            tab+="<span>("+j+")"+result.stationInfo[i].buslines[j].id+"</span>";
+                            tab+="<span>("+j+")"+result.stationInfo[i].buslines[j].name+"</span>";
+                            tab+="<span>("+j+")"+result.stationInfo[i].buslines[j].location+"</span>";
+                            tab+="<span>("+j+")"+result.stationInfo[i].buslines[j].start_stop+"</span>";
+                            tab+="<span>("+j+")"+result.stationInfo[i].buslines[j].end_stop+"</span>";
+//                            document.getElementById('tip7').innerHTML =result.stationInfo[i].buslines[j].id;
+//                            document.getElementById('tip8').innerHTML =result.stationInfo[i].buslines[j].name;
+//                            document.getElementById('tip9').innerHTML =result.stationInfo[i].buslines[j].location;
+//                            document.getElementById('tip10').innerHTML =result.stationInfo[i].buslines[j].start_stop;
+//                            document.getElementById('tip11').innerHTML =result.stationInfo[i].buslines[j].end_stop;
+//
+                        }
+                   }
+                    tab+="</td></tr>";
+                }
+                tab+="</table>";
+                document.getElementById('tip12').innerHTML= tab;
+            }
+            else {
+                alert(result.stationInfo.length);
+            }
+
+        });
+
+     }
+    /*公交站点查询返回数据解析*/
+    function stationSearch_CallBack(searchResult) {
+        var stationArr = searchResult.stationInfo;
+        var searchNum = stationArr.length;
+        if (searchNum > 0) {
+            document.getElementById('tip').innerHTML = '查询结果：共' + searchNum + '个站点';
+            for (var i = 0; i < searchNum; i++) {
+                var marker = new AMap.Marker({
+                    position: stationArr[i].location,
+                    map: map,
+                    title: stationArr[i].name
+                });
+                marker.info = new AMap.InfoWindow({
+                    content: stationArr[i].name,
+                    offset: new AMap.Pixel(0, -30)
+                });
+                marker.on('click', function(e) {
+                    e.target.info.open(map, e.target.getPosition())
+                })
+            }
+            map.setFitView();
+        }
+    }
+</script>
+<script type="text/javascript" src="http://webapi.amap.com/demos/js/liteToolbar.js"></script>
+</body>
+</html>
