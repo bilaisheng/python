@@ -2,9 +2,7 @@
 lily/demo/download.py
 lily/demo/download.py
 lily/demo/download.py
-<<<<<<< HEAD
-godliness/demo/image.jpg
-=======
+
 
 # Byte-compiled / optimized / DLL files
 __pycache__/
@@ -73,7 +71,8 @@ instance/
 docs/_build/
 
 # PyBuilder
-target/
+target/*
+/*/target/*
 
 # Jupyter Notebook
 .ipynb_checkpoints
@@ -88,9 +87,9 @@ celerybeat-schedule
 .env
 
 # virtualenv
-.venv/
-venv/
-ENV/
+.venv/*
+venv/*
+ENV/*
 
 # Spyder project settings
 .spyderproject
@@ -99,8 +98,10 @@ ENV/
 .ropeproject
 
 # .idea
-/.idea/
->>>>>>> 7b9e211ee45b2c32959e23c4c76dde9574b4988c
-B/ActualCombat/awesom-python3-webapp/www/app.py
-B/ActualCombat/awesom-python3-webapp/www/app.py
-B/base/def.py
+.idea/*
+/*/.idea/*
+
+.idea/misc.xml
+.idea/misc.xml
+.idea/python.iml
+.idea/workspace.xml
