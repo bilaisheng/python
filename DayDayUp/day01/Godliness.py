@@ -11,14 +11,14 @@
 
 print('转义前 : ' + 'C:\some\name')
 print("转义后 : " + r'C:\some\name')
-str = 'Runoob'
-print(str)  # 输出字符串
-print(str[0:-1])  # 输出第一个到倒数第二个的所有字符
-print(str[0])  # 输出字符串第一个字符
-print(str[2:5])  # 输出从第三个开始到第五个的字符
-print(str[2:])  # 输出从第三个开始的后的所有字符
-print(str * 2)  # 输出字符串两次
-print(str + "TEST")  # 连接字符串
+string = 'Runoob'
+print(string)  # 输出字符串
+print(string[0:-1])  # 输出第一个到倒数第二个的所有字符
+print(string[0])  # 输出字符串第一个字符
+print(string[2:5])  # 输出从第三个开始到第五个的字符
+print(string[2:])  # 输出从第三个开始的后的所有字符
+print(string * 2)  # 输出字符串两次
+print(string + "TEST")  # 连接字符串
 
 
 # 创建Tuple
@@ -64,7 +64,7 @@ print(L1)
 L2 = ['abc']
 print(L2)
 
-L3 = ["a","b","c"]
+L3 = ["a", "b", "c"]
 print(L3)
 
 # 会对字符串进行单个字符拆分
@@ -172,9 +172,6 @@ set是建立一系列无序的，不重复的元素；
 创建set的方式是调用set()并传入一个list，list的元素将作为set的元素；
 set和dict的唯一区别仅在于没有存储对应的value。
 '''
-
-
-
 # 循环
 sites = ["Baidu", "Google", "Runoob", "Taobao"]
 
