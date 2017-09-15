@@ -38,9 +38,9 @@ print(classmates[0]);
 print(classmates[-1]);
 #list的操作。list是可变的，可追加到末尾
 classmates.append('amin');
-#插入指定位置
+# 插入指定位置
 classmates.insert(2,'serry');
-#删除末尾
+# 删除末尾
 classmates.pop();
 #删除指定位置
 classmates.pop(1);
