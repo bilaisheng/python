@@ -3,12 +3,12 @@
 s1 = "chang"
 s2 = "jie"
 
-print(s1) # 输出完整字符串
-print (s1[0])       # 输出s1字符串中的第一个字符
-print (s1[1:5])     # 输出s1字符串中第二个至第五个之间的字符串
-print (s1[2:])     # 输出s1中从第三个字符开始的字符串
-print (s1 * 2)      # 输出字符串两次
-print (s1+s2)      # 输出连接字符串s1 s2
+print(s1)  # 输出完整字符串
+print(s1[0])       # 输出s1字符串中的第一个字符
+print(s1[1:5])     # 输出s1字符串中第二个至第五个之间的字符串
+print(s1[2:])     # 输出s1中从第三个字符开始的字符串
+print(s1 * 2)      # 输出字符串两次
+print(s1+s2)      # 输出连接字符串s1 s2
 
 # 数字（Digit）
 a = 123
@@ -18,32 +18,32 @@ list1 = ['c', 'h', 'a', 'n','g']
 list2 = [1,2,3]
 list3 =["chang"]
 
-print (list1)  # 输出完整列表list1
-print (list1[0]) # 输出列表list1的第一个元素
-print (list1[1:4])  # 输出list1第二个至第四个的元素
+print(list1)  # 输出完整列表list1
+print(list1[0]) # 输出列表list1的第一个元素
+print(list1[1:4])  # 输出list1第二个至第四个的元素
 
 # 对列表list2进行更新操作
-print (list2[1])
+print(list2[1])
 list2[1] = 999   # 修改list2中的第2个元素
-print (list2[1]) # 输出更新后的元素
+print(list2[1]) # 输出更新后的元素
 
-#删除列表元素
-print (list2[1])
-del list2[1]  #删除list2中的第2个元素
-print (list2) # 输出删除后的列表
+# 删除列表元素
+print(list2[1])
+del list2[1]  # 删除list2中的第2个元素
+print(list2)  # 输出删除后的列表
 
 # 元组（Tuple）
 # 创建元组
 tup1=(1,2,3)
 print (tup1)
 # 元组与字符串类似，下标索引从0开始，可以进行截取，组合
-print ("tup1[0]: ", tup1[0]) # 输出元组tup1中第1个元素
-print ("tup1[1:]: ", tup1[1:])
+print("tup1[0]: ", tup1[0])  # 输出元组tup1中第1个元素
+print("tup1[1:]: ", tup1[1:])
 
 tup2 = ("all")
-print (tup2)  # 输出字符串 all，这是因为括号()既可以表示tuple，又可以表示数学公式中的小括号
-tup3 = ("all",) # 如果元组只有1个元素，就必须加一个逗号，防止被当作括号运算
-print (tup3)
+print(tup2)  # 输出字符串 all，这是因为括号()既可以表示tuple，又可以表示数学公式中的小括号
+tup3 = ("all",)  # 如果元组只有1个元素，就必须加一个逗号，防止被当作括号运算
+print(tup3)
 
 # 集合（Sets）
 # 集合用于包含一组无序的不重复的对象
@@ -64,11 +64,11 @@ print(s)
 s.remove(4)
 print(s)
 # 集合支持一系列标准操作，包括并集、交集、差集和对称差集
-s1=set([1,2])
-s2=set([1,4])
-print( s1 | s2 ) # s1 和s2的并集
-print( s1 & s2)  # s1 和 s2的交集
-print(s1 - s2 ) # 求差集（项在s1中，但不在s1中）
+s1 = set([1, 2])
+s2 = set([1, 4])
+print(s1 | s2)  # s1 和s2的并集
+print(s1 & s2)  # s1 和 s2的交集
+print(s1 - s2)  # 求差集（项在s1中，但不在s1中）
 print(s1 ^ s2)  # 对称差集（项在s1或s2中，但不会同时出现在二者中）
 
 # 字典（Dictionary）
