@@ -22,4 +22,3 @@ print(r'Ru\noob')
 print(str * 5)
 
 
-springlovetime
