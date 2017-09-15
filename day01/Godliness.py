@@ -144,7 +144,7 @@ append 向 list 的末尾追加单个元素；
 insert 将单个元素插入到 list 中； 
 extend 用来连接 list，使用一个 list 参数进行调用；
 append 接受一个参数, 这个参数可以是任何数据类型, 并且简单地追加到 list 的尾部；
-index 在 list 中查找一个值的首次出现并返回索引值；
+index 在 list 中查找一个值的首次出现并返回索引值； 
 要测试一个值是否在 list 内, 使用 in, 如果值存在, 它返回 True, 否则返为 False ；
 remove 从 list 中删除一个值的首次出现；
 pop 可以删除 list 的最后一个元素, 然后返回删除元素的值，用索引删除制定位置的值；
