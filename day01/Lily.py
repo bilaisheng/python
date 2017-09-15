@@ -80,7 +80,7 @@ s.add('hello')          # 添加元素
 print(s)
 s.update('hello')       # 更新集合中的元素
 print(s)
-s -=set('pypi')         # 减掉集合中的元素
+s -= set('pypi')         # 减掉集合中的元素
 print(s)
 s.remove('t')           # 移除集合中的元素
 print(s)
@@ -88,11 +88,11 @@ print(s)
 # for 循环
 keyword = ['a', 'b', 'c']
 keyword2 = []
-for k in keyword :
+for k in keyword:
     print(k)
 
 # for else 循环
-for k in keyword :
+for k in keyword:
     print(k)
 else:
     print('No Data!')
@@ -101,11 +101,11 @@ else:
 i = 0
 while i < 10:
     print(i)
-    i+=1
+    i += 1
 
 # while else
 j = 3
-while j>3:
+while j > 3:
     print(j)
 else:
     print('j不大于3')
