@@ -11,14 +11,14 @@
 
 print('转义前 : ' + 'C:\some\name')
 print("转义后 : " + r'C:\some\name')
-str = 'Runoob'
-print(str)  # 输出字符串
-print(str[0:-1])  # 输出第一个到倒数第二个的所有字符
-print(str[0])  # 输出字符串第一个字符
-print(str[2:5])  # 输出从第三个开始到第五个的字符
-print(str[2:])  # 输出从第三个开始的后的所有字符
-print(str * 2)  # 输出字符串两次
-print(str + "TEST")  # 连接字符串
+string = 'Runoob'
+print(string)  # 输出字符串
+print(string[0:-1])  # 输出第一个到倒数第二个的所有字符
+print(string[0])  # 输出字符串第一个字符
+print(string[2:5])  # 输出从第三个开始到第五个的字符
+print(string[2:])  # 输出从第三个开始的后的所有字符
+print(string * 2)  # 输出字符串两次
+print(string + "TEST")  # 连接字符串
 
 
 # 创建Tuple
@@ -37,10 +37,10 @@ print(T)
 # 而是1这个数，这是因为括号()既可以表示tuple，又可以表示数学公式中的小括号，这就产生了歧义，
 # 因此，Python规定，这种情况下，按小括号进行计算，计算结果自然是1。
 # 所以定义含一个元素的元组时必须加一个逗号，
-T = (1) # not correct
+T = (1)  # not correct
 print(T)
 
-T = (1,)# correct
+T = (1,)  # correct
 
 # 访问
 T = (1, 2, 3)
@@ -64,7 +64,7 @@ print(L1)
 L2 = ['abc']
 print(L2)
 
-L3 = ["a","b","c"]
+L3 = ["a", "b", "c"]
 print(L3)
 
 # 会对字符串进行单个字符拆分
@@ -144,7 +144,7 @@ append 向 list 的末尾追加单个元素；
 insert 将单个元素插入到 list 中； 
 extend 用来连接 list，使用一个 list 参数进行调用；
 append 接受一个参数, 这个参数可以是任何数据类型, 并且简单地追加到 list 的尾部；
-index 在 list 中查找一个值的首次出现并返回索引值；
+index 在 list 中查找一个值的首次出现并返回索引值； 
 要测试一个值是否在 list 内, 使用 in, 如果值存在, 它返回 True, 否则返为 False ；
 remove 从 list 中删除一个值的首次出现；
 pop 可以删除 list 的最后一个元素, 然后返回删除元素的值，用索引删除制定位置的值；
@@ -172,9 +172,6 @@ set是建立一系列无序的，不重复的元素；
 创建set的方式是调用set()并传入一个list，list的元素将作为set的元素；
 set和dict的唯一区别仅在于没有存储对应的value。
 '''
-
-
-
 # 循环
 sites = ["Baidu", "Google", "Runoob", "Taobao"]
 
