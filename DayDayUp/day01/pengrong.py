@@ -42,6 +42,16 @@ print (strc)
 print (strd)
 print (stre)
 print (strf)
+# 字符串 截取 拼接 叠加
+stra="My name is Vincent."
+
+print(stra[0])
+print(stra[-1])
+
+
+
+
+
 
 # 布尔类型 以及 逻辑运算
 
