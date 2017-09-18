@@ -1,5 +1,7 @@
 # 引入字符包
 import string
+# 引入正则表达式包
+import re
 
 # 输出26个字母以及对应ASCII码
 for word in string.ascii_lowercase:
@@ -228,8 +230,6 @@ print(delimiter.join(myList))
     匹配帐号是否合法(字母开头，允许5-16字节，允许字母数字下划线)：^[a-zA-Z][a-zA-Z0-9_]{4,15}$
     匹配国内电话号码：(/d{3}-|/d{4}-)?(/d{8}|/d{7})?
 '''
-# 引入正则表达式包
-import re
 
 # 匹配一段文本中的每行的邮箱
 y = '123@qq.comaaa@163.combbb@126.comasdfasfs33333@adfcom'
