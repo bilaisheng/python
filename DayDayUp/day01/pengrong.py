@@ -97,7 +97,7 @@ classmates = ['Michael', 'Bob', 'Tracy']
 list1=['I','am',18]
 list2=['you',23,list1]
 
-# List截取 拼接,替换
+# List截取 拼接,替换，可以替换变量对应数据对象，或者增加列表元素；list 是用 [ ] 作为边界符
 # 循环输出，必须用Range输出
 for index in  range(0,len(classmates)):
     print(classmates[index])
@@ -114,16 +114,86 @@ classmates.insert(0,'Jack') #指定位置增加
 print(classmates[0])
 print(classmates[-1])
 print(classmates)
+#print(classmates.sort())
+classmates.sort()  # 排序
+print(classmates)
 
 
-# 删除
+# 删除 末尾元素
 classmates.pop()
 classmates.pop(0)
 print(classmates)
 
-# 替换
+# 替换 指定位置元素内容
 classmates[0]="BBBBB"
 print(classmates)
 
 
-# tuple  tuple一旦初始化就不能修改
+# tuple  tuple一旦初始化就不能修改元祖元素所指向的对象 ，但是对象的属性可以改变。
+# 元祖以 ( ) 作为元素边界符
+classmates = ('AA', 'BB', 'DD')
+print(classmates)
+
+# classmates.append('df') 无append属性，不能尾加。
+# classmates[0]='ee' tuple元素 不支持分配新对象给元素。
+
+print(classmates)
+
+# 定义空tuple
+tuple1=()
+print(tuple1)
+#定义一个元素的tuple
+tuple1=(1,)
+print(tuple1)
+
+# tuple 里面包含list， 元祖指向[34,56,78,90]这个list指向不可变，
+# 但是list里面的list元素可以改变。tuple一开始指向的list并没有改成别的list；
+classmates = ('AA', 'BB', 'DD',[34,56,78,90])
+print(classmates)
+classmates[3][0]=100
+classmates[3][1]=200
+print(classmates)
+
+#理解了“指向不变”后，要创建一个内容也不变的tuple怎么做？那就必须保证tuple的每一个元素本身也不能变。 元祖指向元祖
+
+classmates = (('AA',),( 'BB',), ('DD',),(34,56,78,90))
+print(classmates)
+# classmates[3][0]=45 tuple 的元素指向一个元祖，元祖是不可变的。那么就实现了元祖的内容也是不变的。
+print(classmates)
+
+
+
+# Set 类型
+
+
+# Dict类型
+
+
+# 三大流程结构
+
+# if -elif -else
+
+age=16
+age=input("please a age: ") # input 返回的是str  ，要进行类型强制转换。
+age=int(age)
+if age>=18:
+    print("成年人")
+elif age>12 :
+    print("青少年")
+else:
+    print("小孩")
+
+# 循环结构
+    # for x in ...:
+    # while  x:
+sum=0
+for x in  range(101):
+    sum+=x
+print(sum)
+
+#第二种循环是while循环，只要条件满足，就不断循环
+sums=0
+while sum>0:
+    sums+=sum
+    sum=sum-1000
+print(sums)
