@@ -115,7 +115,15 @@ print(classmates[0])
 print(classmates[-1])
 print(classmates)
 
+
 # 删除
 classmates.pop()
 classmates.pop(0)
 print(classmates)
+
+# 替换
+classmates[0]="BBBBB"
+print(classmates)
+
+
+# tuple  tuple一旦初始化就不能修改
