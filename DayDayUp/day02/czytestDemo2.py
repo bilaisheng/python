@@ -41,14 +41,14 @@ while i < 10:
 
 '''
 常用列表操作方法
-    1、list.append():追加成员    
-    2、list.count(x):计算列表中参数x出现的次数    
-    3、list.extend(L):向列表中追加另一个列表L    
-    4、list.index(x):获得参数x在列表中的位置    
-    5、list.insert():向列表中插入数据    
-    6、list.pop():删除列表中的成员（通过下标删除）    
-    7、list.remove():删除列表中的成员（直接删除）    
-    8、list.reverse():将列表中成员的顺序颠倒    
+    1、list.append():追加成员
+    2、list.count(x):计算列表中参数x出现的次数
+    3、list.extend(L):向列表中追加另一个列表L
+    4、list.index(x):获得参数x在列表中的位置
+    5、list.insert():向列表中插入数据
+    6、list.pop():删除列表中的成员（通过下标删除）
+    7、list.remove():删除列表中的成员（直接删除）
+    8、list.reverse():将列表中成员的顺序颠倒
     9、list.sort():将列表中成员排序
 '''
 # 列表(List)
@@ -100,12 +100,12 @@ print(list[:2])
     4、负数索引与list一样从tuple的尾部开始计数
     5、与list一样分片(slice)也可以使用 .注意当分割一个list时,会得到一个新的list;当分割
     所以当分割一个tuple时,会得到一个新的tuple
-    
+
     tuple不存在的方法
     1、不能从一个tuple增加元素。所以没有append 和extend方法
     2、不能用tuple删除元素,所以没有remove和pop方法 但是经tuple合并
     3、然而可以使用index 来查看一个元素是否存在tuple中
-    
+
     使用tuple的好处
     1、tuple比list操作速度快.如果定义了一个值的常量集,并且唯一要用它做的是不断地遍历
     则用tuple代替list
@@ -198,5 +198,53 @@ print(ss)
 1 in s
 '甲' not in s
 
+'''
+字典是另一种可变容器模型，且可存储任意类型对象。
+字典的每个键值(key=>value)对用冒号(:)分割，每个对之间用逗号(,)分割，整个字典包括在花括号({})中
 
+键必须是唯一的，但值则不必。
+值可以取任何数据类型，但键必须是不可变的，如字符串，数字或元组,但是用列表不行
+'''
 # 字典(Dictionary)
+# 创建一个字典
+dict = { 'abc': 123, 98.6: 37 };
+print('\t输出字典所有值 ：\n\t',dict,'\n','\t根据key输出对应值： \n\t',dict['abc'])
+
+#向字典添加新内容的方法是增加新的键/值对，修改或删除已有键/值对如
+dict['abc']='abc'
+dict['name']='czy'
+print('将dict中的abc的值改为abc:',dict['abc'],'\n给dict增加一个新的键值对：',dict['name'])
+
+'''
+字典的删除的三种 
+删除一个键值对 del dict[]
+清空dict  dict.clear()
+删除字典  del dict
+'''
+print('原来的dict:\n',dict)
+del dict[98.6]
+print('删除键值对98.6后的dict\n',dict)
+dict.clear()
+print('清空dict后的dict:\n',dict)
+del dict
+print('删除dict:\n',dict)
+
+#返回字典的key   key()
+dict2 = {'a':1,'b':2}
+print(dict2.keys())
+
+# dict.setdefault(key, default=None) 和get()类似, 但如果键不存在于字典中，将会添加键并将值设为default
+print(dict2.setdefault('c'))
+print('使用setdefault（）后：',dict2)
+
+#连接两个dict,把字典dict2的键/值对更新到dict里
+dict={'D':'d'}
+dict.update(dict2)
+print(dict.values())
+
+#根据键删除元素
+#注意：popitem()可以随机删除一个键值对
+dict.pop('c')
+print(dict)
+
+
