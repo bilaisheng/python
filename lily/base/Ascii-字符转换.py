@@ -1,0 +1,14 @@
+#!/usr/bin/python3
+# Filename : Ascii_change
+# Author by : Lily
+"""
+ASCII--》字符：chr()   97-->a
+字符--》ASCII: ord()   a-->97
+"""
+# 用户输入字符
+c = input("请输入一个字符：")
+# 用户输入ASCII码，并将输入的数字转为整型
+a = int(input("请输入一个ASCII码："))
+
+print(c + "的ASCII码为：", ord(c))
+print(a, "对应的字符为：", chr(a))
