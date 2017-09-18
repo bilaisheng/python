@@ -1,0 +1,30 @@
+https://docs.python.org/3/library/urllib.request.html
+
+
+### 首先在python3里面，urllib.request是一个模块，不要把urllib当作一个模块，然后把request当作他的方法，urllib.request这个模块也有Request方法，urlopen方法等，请谨记这一点
+
+1.urllib.request.urlopen(url=)
+这个方法返回的是一个http.client.HTTPResponse object，所以如果要读取html代码，需要用read方法，如果是中文网页，还需要编码方案like below:
+>urllib.request.urlopen(url='http://www.baidu.com').read().decode('utf-8')
+
+有时候用utf-8编码去读取中文网页不一定行，这时候可以尝试下gbk,gb2312等编码方案，比如：
+
+![](http://one17356s.bkt.clouddn.com/17-9-17/52547986.jpg)
+
+我们可以打开网页源码查看其编码方案：
+
+![](http://one17356s.bkt.clouddn.com/17-9-17/55602262.jpg)
+
+then 
+
+```python
+def get_url(link):
+	request=urllib.request.Request(link)
+	html=urllib.request.urlopen(request).read().decode('gb2312')
+	print(html)
+```
+it works !!!!!!
+
+2.urllib.request.urlopen().read()与urllib.request.urlopen().read().decode（'utf-8'）返回的是两个不同的类型对象，前者是bytes对象，后者是string对象，所以如果要做爬虫项目使用正则表达式去对html进行分析，必须用read().decode()
+
+
