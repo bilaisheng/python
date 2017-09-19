@@ -153,11 +153,11 @@ def person(name, age, *, city, job):
 person('super',25,city='beijing',job='engineer') #jack 25 beijing engineer
 
 # 如果函数定义已经有了一个可变参数，后面跟着命名关键字参数就不再需要*
-def student(name,age,*args,city,job):
+def student(name,age,*args, city, job):
  print(name,age,args,city,job)
 # 命名关键字必须传入参数名，若传入参数名，调用将报错。
 
-def student(name,age,*,city='beijing',job):
+def student(name, age, *, city='beijing', job):
  print(name,age,city,job)
 # 由于命名关键字参数可以有缺省值，调用时可以不传入city参数。
 student('jack',25,job='study')
@@ -167,7 +167,7 @@ student('jack',25,job='study')
 def f1(a,b,c=0,*args,**kw):
  print('a=',a,'b=',b,'args=',args,'kw=',kw)
 
-def f2(a, b, c=0,*,d,**kw):
+def f2(a, b, c=0, *, d, **kw):
  print('a =', a, 'b =', b, 'c =', c, 'd =', d, 'kw =', kw)
 
 # * 可变参数，**关键字参数 区别调用*的时候将赋值转化为列表，调用**时转化为字典，特别注意的是* ，**可为空值。
