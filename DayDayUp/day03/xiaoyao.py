@@ -14,9 +14,9 @@ print(my_abs(-3))  # 输出调用函数my_abs（）以后的值
     参数可设置默认值，当使用函数时没给相应的参数时，
     会按照默认值进行赋值
 '''
+
+
 # 定义一个空函数
-
-
 def nop():
     pass  # pass可以用来作为占位符，比如现在还没想好怎么写函数的代码，就可以先放一个pass，让代码能运行起来
 
@@ -47,17 +47,16 @@ print(power(5,3))
 
   二是如何设置默认参数。 
 '''
+
+
 # 把年龄和性别设置为默认参数
-
-
 def enroll(name, gender='男', age=6):
     print('name:', name)
     print('gender:', gender)
     print('age:', age)
 
+
 # 可变参数
-
-
 def calc(numbers):
     sum = 0
     for n in numbers:
@@ -69,15 +68,23 @@ print(calc((1, 2, 3)))
 __author__ = "bilaisheng"
 if __name__ == "__main__":
     print(calc([1, 2, 3]))
+
+
 # 把def calc(numbers):改为可变参数为：
-
-
 def calc(*numbers):
     sum = 0
     for n in numbers:
         sum = sum + n * n
     return sum
 print(calc(100))
+
+
+# 关键字参数：允许你将不定长度的键值对作为参数传递给一个函数，调用时的顺序可以和声明时的顺序不一样
+# 使用**表示关键字参数
+def person(name, age, **kw):
+    print('name:', name, 'age:', age, 'other:', kw)
+
+print(person('Bob', 13, city='beijing'))    # 输出name: Bob age: 13 other: {'city': 'beijing'}
 
 # 接受一个迭代器，如果迭代器的所有元素都为真，那么返回True，否则返回False>>>>False
 print(all([1, 0, 3, 6]))
@@ -134,15 +141,74 @@ print(len(s))  # >>>>>15
 
 '''
 sorted()　　排序
-列表排序，按数轴方向排
-高阶函数，以绝对值大小排序
 字符串排序，按照ASCII的大小排序
 如果需要排序的是一个元组，则需要使用参数key，也就是关键字。
 反向排序，reserve=True
 '''
 print(sorted([5, 2, 3, 1, 4]))
 
-# python重点几类函数参数 ，顺序，对函数调用的影响。
+
+'''
+所有参数（自变量）在Python里都是按引用传递。
+如果你在函数里修改了参数，那么在调用这个函数的函数里，
+原始的参数也被改变了
+'''
+# 修改列表的值
+
+
+def change(list):
+    "修改传入的列表"
+    list.append([1,2,3,4])
+    print("函数内取值: ", list)
+    return
+
+# 调用change函数
+list = [10,20,30]
+change(list)
+print("函数外取值: ", list)
+#  传入函数的和在末尾添加新内容的对象用的是同一个引用。故输出结果如下：
+#  函数内取值:  [10, 20, 30, [1, 2, 3, 4]]
+#  函数外取值:  [10, 20, 30, [1, 2, 3, 4]]
+
+'''
+局部变量只能在其被声明的函数内部访问，而全局变量可以在整个程序范围内访问。
+调用函数时，所有在函数内声明的变量名称都将被加入到作用域中。
+'''
+total = 0;  # This is global variable.
+
+
+def sum(arg1, arg2):  # 返回2个参数的和.
+    total = arg1 + arg2  # total在这里是局部变量.
+    print("Inside the function local total : ", total)
+    return total
+
+# 调用sum函数
+sum(10, 20)
+print("Outside the function global total : ", total)
+# 以上实例输出结果：
+# Inside the function local total :  30
+# Outside the function global total :  0
+
+# complie()　将字符串编译成python能识别或可以执行的代码，也可以将文字读成字符串再编译。`
+s = "print('helloworld')"
+r = compile(s, "<string>", "exec")
+print(r)  # >>>>>>><code object <module> at 0x0000000000B426F0, file "<string>", line 1>
+
+# 函数声明只有3种类型, arg, *arg , **arg
+# *arg 和 **arg可以为空值.
+# arg, *arg和**arg作用举例
+def test2(a,*b,**c):
+    print(a,b,c)
+
+# *arg 和 **arg可以不传递参数
+print(test2(1)) # >>>>>>>1 () {}
+
+# arg必须传递参数
+print(test2())  # 运行报错
+# Traceback (most recent call last):
+# File "<stdin>", line 1, in <module>
+# TypeError: test2() takes at least 1 argument (0 given)
+
 
 
 
