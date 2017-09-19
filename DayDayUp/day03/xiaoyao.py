@@ -194,7 +194,20 @@ s = "print('helloworld')"
 r = compile(s, "<string>", "exec")
 print(r)  # >>>>>>><code object <module> at 0x0000000000B426F0, file "<string>", line 1>
 
+# 函数声明只有3种类型, arg, *arg , **arg
+# *arg 和 **arg可以为空值.
+# arg, *arg和**arg作用举例
+def test2(a,*b,**c):
+    print(a,b,c)
 
+# *arg 和 **arg可以不传递参数
+print(test2(1)) # >>>>>>>1 () {}
+
+# arg必须传递参数
+print(test2())  # 运行报错
+# Traceback (most recent call last):
+# File "<stdin>", line 1, in <module>
+# TypeError: test2() takes at least 1 argument (0 given)
 
 
 
