@@ -4,6 +4,7 @@
 #         for i in range(len(nums)):
 #             x = nums[i]
 #             if target-x in dict:
+#                 return (dict[target-x], i)
 #             dict[x] = i
 # test = Solution
 # print(test.twoSum([2, 7, 11, 15], 9))
