@@ -1,2 +1,0 @@
-# python
-lily and godliness
