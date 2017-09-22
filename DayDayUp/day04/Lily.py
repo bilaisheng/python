@@ -1,4 +1,4 @@
--"""
+"""
 Day 4:
 用戶定义类，数字常量和内置数学工具和扩展，表达式操作符
 递归阶乘
@@ -6,19 +6,25 @@ Day 4:
 函数实现斐波拉契数列
 随机输入一串数字，用冒泡、选择、插入、快速法排序
 """
+import math
+import random
+
 
 # 定义类
 class Furniture(object):
-    def __init__(self,name,price,count):
+    def __init__(self, name, price, count):
         self.name = name
         self.price = price
         self.count = count
+
     def print_price(self):
-        print("%s%s"%(self.name,self.price))
+        print("%s%s" % (self.name, self.price))
+
     def get_total_price(self):
         return self.price * self.count
 
-cost = Furniture('desk',300,2)
+
+cost = Furniture('desk', 300, 2)
 print(cost.get_total_price())
 
 """
@@ -52,13 +58,13 @@ radians(x)	将角度转换为弧度
     但如果其中一个操作数为负数，则结果将被保留，即从零(向负无穷大)舍去
     9//2 = 4 ， 9.0//2.0 = 4.0, -11//3 = -4, -11.0//3 = -4.0
 """
-print(2+4)
-print(9-2)
-print(5*3)
-print(20/3)
-print(40%3)
-print(2**3)
-print(42//5)
+print(2 + 4)
+print(9 - 2)
+print(5 * 3)
+print(20 / 3)
+print(40 % 3)
+print(2 ** 3)
+print(42 // 5)
 
 """
 2.比较(关系)运算符
@@ -70,7 +76,7 @@ print(42//5)
 <=	如果左操作数的值小于或等于右操作数的值，则条件成为真。	(a <= b)求值结果为 true
 """
 s = 8
-if s ==18:
+if s == 18:
     print("你刚成年")
 elif s < 18:
     print("你还未成年")
@@ -90,7 +96,7 @@ else:
 **=	执行指数(幂)计算，并将值分配给左操作数	c **= a 等价于 c = c ** a
 //=	运算符执行地板除运算，并将值分配给左操作数	c //= a 等价于 c = c // a
 """
-a , b = 3, 5
+a, b = 3, 5
 a += 5
 print(a)
 b -= 3
@@ -130,20 +136,20 @@ pow(x, y)	    x**y 运算后的值。
 round(x [,n])	返回浮点数x的四舍五入值，如给出n值，则代表舍入到小数点后的位数。
 sqrt(x)	        返回数字x的平方根
 """
-import math
-print(abs(-245))   # 输出245
-print(math.ceil(3.2))    # 输出4
-print(math.exp(4))       # 输出54.598150033144236
-print(math.fabs(-20))    # 输出20.0
-print(math.floor(2.6))   # 输出2
-print(math.log(20))      # 输出2.995732273553991
-print(math.log10(200))   # 输出2.3010299956639813
-print(max(1,3,4))        # 输出4
-print(min(1,4,2))        # 输出1
-print(math.modf(2.58))   # 输出(0.5800000000000001, 2.0)
-print(math.pow(2,3))     # 输出8
-print(round(3.4553809,4))# 输出3.4554
-print(math.sqrt(16))     # 输出4
+
+print(abs(-245))  # 输出245
+print(math.ceil(3.2))  # 输出4
+print(math.exp(4))  # 输出54.598150033144236
+print(math.fabs(-20))  # 输出20.0
+print(math.floor(2.6))  # 输出2
+print(math.log(20))  # 输出2.995732273553991
+print(math.log10(200))  # 输出2.3010299956639813
+print(max(1, 3, 4))  # 输出4
+print(min(1, 4, 2))  # 输出1
+print(math.modf(2.58))  # 输出(0.5800000000000001, 2.0)
+print(math.pow(2, 3))  # 输出8
+print(round(3.4553809, 4))  # 输出3.4554
+print(math.sqrt(16))  # 输出4
 
 """
 随机数函数
@@ -154,33 +160,35 @@ seed([x])	改变随机数生成器的种子seed。如果你不了解其原理，
 shuffle(lst)	将序列的所有元素随机排序
 uniform(x, y)	随机生成下一个实数，它在[x,y]范围内。
 """
-import random
-print(random.choice([1,3,5,7,8]))
-print(random.randrange(0,10))
+
+print(random.choice([1, 3, 5, 7, 8]))
+print(random.randrange(0, 10))
 print(random.random())
 print(random.seed())
-print(random.shuffle([1,5,7,2,4]))
-print(random.uniform(3,7))
+print(random.shuffle([1, 5, 7, 2, 4]))
+print(random.uniform(3, 7))
+
 
 # 递归乘阶
 def fact(n):
-    if n==1:
+    if n == 1:
         return n
-    return n*fact(n-1)
+    return n * fact(n - 1)
+
 
 print(fact(7))
 
 # 用列表生成式实现[1, 4, 9, 16, 25, 36, 49, 64, 81, 100]。
-print([x * x for x in range(1,11)])
+print([x * x for x in range(1, 11)])
 
 
 # 函数实现斐波拉契数列
 # def recurfibo(n):
-    # 递归函数 输出斐波那契数列
-    # if n <= 1:
-    #     return n
-    # else:
-    #     return (recurfibo(n-1)) + recurfibo(n-2)
+# 递归函数 输出斐波那契数列
+# if n <= 1:
+#     return n
+# else:
+#     return (recurfibo(n-1)) + recurfibo(n-2)
 # 获取用户输入
 # nterms = int(input("您要输出几项？"))
 # if nterms <= 0:
@@ -193,18 +201,19 @@ print([x * x for x in range(1,11)])
 # 随机输入一串数字，用冒泡、选择、插入、快速法排序
 # 1.选择排序
 def selection(lista):
-    leng=len(lista)
-    for i in range(0,leng):
-        index=i
-        min=lista[i]
-        for j in range(i,leng):
-            if lista[j]<min:
-                index=j
-                min=lista[index]
-        tmp=lista[i]
-        lista[i]=lista[index]
-        lista[index]=tmp
+    leng = len(lista)
+    for i in range(0, leng):
+        index = i
+        min1 = lista[i]
+        for j in range(i, leng):
+            if lista[j] < min1:
+                index = j
+                min1 = lista[index]
+        tmp = lista[i]
+        lista[i] = lista[index]
+        lista[index] = tmp
     return lista
+
 
 # 2.插入排序
 def insertion(lista):
@@ -212,21 +221,23 @@ def insertion(lista):
     for i in range(1, leng):
         tmp = lista[i]
         j = i
-        while (j > 0 and lista[j - 1] > tmp):
+        while j > 0 and tmp < lista[j - 1]:
             lista[j] = lista[j - 1]
             j = j - 1
         lista[j] = tmp
     return lista
 
+
 # 3.冒泡排序
 def bubble(lista):
-    leng=len(lista)
-    for i in range(0,leng):
-        for j in range(1,leng-i):
-            if lista[j-1]>lista[j]:
-                lista[j-1],lista[j]=lista[j],lista[j-1]
+    leng = len(lista)
+    for i in range(0, leng):
+        for j in range(1, leng - i):
+            if lista[j - 1] > lista[j]:
+                lista[j - 1], lista[j] = lista[j], lista[j - 1]
     return lista
 
-print(bubble([3,76,8,3,9,4,2,9,5,33,21]))
-print(insertion([3,76,8,3,9,4,2,9,5,33,21]))
-print(selection([3,76,8,3,9,4,2,9,5,33,21]))
+
+print(bubble([3, 76, 8, 3, 9, 4, 2, 9, 5, 33, 21]))
+print(insertion([3, 76, 8, 3, 9, 4, 2, 9, 5, 33, 21]))
+print(selection([3, 76, 8, 3, 9, 4, 2, 9, 5, 33, 21]))

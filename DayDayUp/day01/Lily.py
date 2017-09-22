@@ -11,13 +11,13 @@ d = True
 e, f, g = 1, 3.2, 3+3j
 
 # 数字类型常用的运算符
-sum = 4 + 6
+sum1 = 4 + 6
 sub = 6 - 2
 mul = 5 * 1
-divi = 8 /2
+divi = 8 / 2
 divi_1 = 9 // 2
 mo = 19 % 5
-print('sum =', sum, 'sub =', sub, 'mul =', mul, 'divi =', divi, 'divi_1 =', divi_1, 'mo =', mo)
+print('sum =', sum1, 'sub =', sub, 'mul =', mul, 'divi =', divi, 'divi_1 =', divi_1, 'mo =', mo)
 
 # 创建一个String(字符串)类型
 Name = 'My name is Lily'
@@ -38,33 +38,33 @@ print(Name+Hobby)   # 字符串拼接
 print(Name*3)       # 字符串叠加
 
 # 创建一个List(列表)类型
-list = ['My', 'Name', 'is', 'Lily']
+list0 = ['My', 'Name', 'is', 'Lily']
 list1 = ['I', 'am', 18]
 list3 = [134, 'python', [1, 3, 5]]
 
 # List截取 拼接,替换
-print(list[0])    # 按照索引取第一个元素
-print(list[1:3])  # 切片取索引为1-2的元素
-print(list+list3)   # 合并list和list3
-print(list*2)     # list 叠加
-list[0] = 'Your'    # 改变list[0]的值
-print(list)
-list.sort()           # 同类型的元素可以进行排序
-print(list)
-list.append('what!')   # 在列表末端添加元素
-print(list)
-list.pop()            # 删除最后一个元素，并返回该元素
-print(list)
+print(list0[0])    # 按照索引取第一个元素
+print(list0[1:3])  # 切片取索引为1-2的元素
+print(list0 + list3)   # 合并list和list3
+print(list0 * 2)     # list 叠加
+list0[0] = 'Your'    # 改变list[0]的值
+print(list0)
+list0.sort()           # 同类型的元素可以进行排序
+print(list0)
+list0.append('what!')   # 在列表末端添加元素
+print(list0)
+list0.pop()            # 删除最后一个元素，并返回该元素
+print(list0)
 
 # 创建一个Tuple(元组)类型
-tuple = (1, 2, 3, 'a', 'b', 'c')
+tuple0 = (1, 2, 3, 'a', 'b', 'c')
 tuple2 = ()
 tuple3 = (333,)
-print(tuple[0])         # 索引取值
-print(len(tuple))       # 返回tuple的长度
+print(tuple0[0])         # 索引取值
+print(len(tuple0))       # 返回tuple的长度
 
 # 创建一个Dict(字典)类型
-student = {'name':'zhangshan','age':18,'weight':64}
+student = {'name': 'zhangshan', 'age': 18, 'weight': 64}
 print(student['name'])      # 获取字典中的和那么对应的值
 student['name'] = 'lisi'    # 更新字典
 print(student)
@@ -109,5 +109,3 @@ while j > 3:
     print(j)
 else:
     print('j不大于3')
-
-

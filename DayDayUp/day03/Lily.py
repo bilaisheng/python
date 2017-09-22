@@ -13,10 +13,10 @@ def 函数名（参数列表）：
 """
 
 
-def Hello():
+def hello():
     print('Hello,world!')
 
-Hello()     # 输出Hello,world!
+hello()     # 输出Hello,world!
 
 
 # 函数参数包含（必选参数，默认参数，可选参数，关键字参数，命名关键字）
@@ -58,13 +58,11 @@ print(person('Bob', 13, city='beijing'))    # 输出name: Bob age: 13 other: {'c
 # 可选参数：可选参数是传入的参数是可变的，可以是1个，可以是2个到任意个还可以是0个
 # 在参数前面加一个*号就是可变参数
 def calc(*numbers):
-    sum = 0
+    sum1 = 0
     for n in numbers:
-        sum = sum + n*n
-    return sum
+        sum1 = sum1 + n * n
+    return sum1
 
 print(calc(2, 4, 1))  # 输出21
 
 # 命名关键字：如果入宫如果
-
-

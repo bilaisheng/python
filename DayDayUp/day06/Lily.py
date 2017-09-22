@@ -39,7 +39,7 @@ print(isinstance({}, Iterator))
 print(isinstance((), Iterator))
 print(isinstance(set(), Iterator))
 print(isinstance('abcde', Iterator))
-L = [1,2,4,6]
+L = [1, 2, 4, 6]
 I = iter(L)
 print(next(I))
 print(next(I))
@@ -69,6 +69,8 @@ for n in g:
 函数是顺序执行，遇到return语句或者最后一行函数语句就返回。
 而变成generator的函数，在每次调用next()的时候执行，遇到yield语句返回，再次执行时从上次返回的yield语句处继续执行。
 """
+
+
 def odd():
     print('step 1')
     yield 1
@@ -97,7 +99,7 @@ print(str(s))
 print(repr(s))
 print(str(s1))
 print(repr(s1))
-print(repr('Hello,word\nPython')) #  repr() 函数可以转义字符串中的特殊字符
+print(repr('Hello,word\nPython'))   # repr() 函数可以转义字符串中的特殊字符
 print(str('Hello,word\nPython'))
 
 # rjust() 返回一个原字符串右对齐,并使用空格填充至长度 width 的新字符串。
@@ -106,7 +108,7 @@ print(str('Hello,word\nPython'))
 # 另一个方法 zfill(), 它会在数字的左边填充 0
 for x in range(1, 11):
     print(repr(x).rjust(2), repr(x*x).rjust(3), end=' ')
-     # 注意前一行 'end' 的使用
+    # 注意前一行 'end' 的使用
     print(repr(x*x*x).rjust(4))
 
 
@@ -121,7 +123,7 @@ print('abc'.center(10))
 print('{}网址： "{}!"'.format('菜鸟教程', 'www.runoob.com'))
 print('{name}网址： {site}'.format(name='菜鸟教程', site='www.runoob.com'))
 print('{0} 和 {1}'.format('Google', 'Runoob'))
-print('站点列表 {0}, {1}, 和 {other}。'.format('Google', 'Runoob',other='Taobao'))
+print('站点列表 {0}, {1}, 和 {other}。'.format('Google', 'Runoob', other='Taobao'))
 
 # '!a' (使用 ascii()), '!s' (使用 str()) 和 '!r' (使用 repr())
 # 可以用于在格式化某个值之前对其进行转化:
@@ -148,7 +150,7 @@ print('常量 PI 的值近似为：%5.3f。' % math.pi)
 #  input 可以接收一个Python表达式作为输入，并将运算结果返回。
 
 # str = input("请输入：");
-# print ("你输入的内容是: ", str)
+# print("你输入的内容是: ", str)
 
 """
 1.	file.close()
@@ -174,22 +176,22 @@ print('常量 PI 的值近似为：%5.3f。' % math.pi)
 
 """
 # 打开文件
-fo = open("knowledge", "r",encoding='utf-8')
-print ("文件名为: ", fo.name)
+fo = open("knowledge", "r", encoding='utf-8')
+print("文件名为: ", fo.name)
 
 line = fo.read(10)
-print ("读取的字符串: %s" % (line))
+print("读取的字符串: %s" % line)
 
 # 关闭文件
 fo.close()
 
 # 打开文件
-fo = open("knowledge", "r",encoding='utf-8')
-print ("文件名为: ", fo.name)
+fo = open("knowledge", "r", encoding='utf-8')
+print("文件名为: ", fo.name)
 
 for index in range(3):
     line = next(fo)
-    print ("第 %d 行 - %s" % (index, line))
+    print("第 %d 行 - %s" % (index, line))
 
 # 关闭文件
 fo.close()
