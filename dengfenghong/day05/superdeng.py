@@ -27,7 +27,7 @@ numalSize(s)
 
 def f(x):
     return x*x
-l = map(f, [1, 2, 3, 4, 5, 6])
+l = map(f,[1, 2, 3, 4, 5, 6])
 print(list(l))
 
 # reduce函数 把一个函数作用在一个序列[x1,x2,x3,x4....]这个函数接收两个参数，reduce把结果继续和序列的下一个元素做积累
