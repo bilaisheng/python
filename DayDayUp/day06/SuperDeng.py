@@ -86,6 +86,7 @@ with open('text.txt', 'w') as f:
 # StringIO
 # getvaule方法获得写入后的str
 
+
 from io import  StringIO
 f = StringIO()
 f.write('hello')
@@ -109,6 +110,9 @@ f = BytesIO(b'\xe4\xb8\xad\xe6\x96\x87')
 f.read()
 # 操作文件和目录
 # os 模块的某些函数是跟操作系统相关的
+
+
+
 import os
 print(os.name)
 # 如果需要获取详细的系统信息，可以调用uname（）
@@ -185,7 +189,7 @@ rules = (
     (match_sxz, apply_sxz),
     (match_h, apply_h),
     (match_y, match_y),
-    (match_default, match_default())
+    (match_default, match_default( ))
          )
 
 # 每一條匹配規則都有自己的函數，返回對re.search()函數
