@@ -167,3 +167,7 @@ class TestDict(unittest.TestCase):
 
     def tearDown(self):
         print('tearDown...')
+
+import re
+m = re.search('(?<=abc)def', 'abcdef')
+print(m.group(0))
