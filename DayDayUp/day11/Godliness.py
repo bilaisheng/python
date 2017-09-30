@@ -1,3 +1,7 @@
+# 多进程
+# 多线程
+# ThreadLocal
+
 from multiprocessing import Pool
 
 import os
