@@ -7,7 +7,7 @@
 Note：1.字符串的内建函数列举了部分，还有很多未列举
 遗留疑惑点：Unicode字符串；buffer对象
 """
-
+import re
 # python 包含6中内建序列：1.列表；2.元组；3.字符串；4.Unicode字符串；5.buffer对象；6.xrange对象（python3是range）
 # 字符串的序列操作包括：
 # 1）索引
@@ -32,13 +32,13 @@ print(Name[-3])   # 输出i
 print(Name[-4])   # 输出L
 
 # 索引原则适用于所有序列
-List = ['you','have',10000,'yuan','in','bank']
+List = ['you', 'have', 10000, 'yuan', 'in', 'bank']
 print(List[0])   # 输出you
 print(List[-1])  # 输出bank
-tuple =(1,2,3)
-print(tuple[1])  # 输出2
-print(tuple[-2]) # 输出2
-r =range(0,10)
+tuple0 = (1, 2, 3)
+print(tuple0[1])  # 输出2
+print(tuple0[-2])  # 输出2
+r = range(0, 10)
 print(r[0])      # 输出0
 print(r[-1])     # 输出9
 
@@ -48,30 +48,30 @@ print(r[-1])     # 输出9
 s = 'abcdefg'
 print(s[0:3])   # 取索引0到2的值，输出abc
 print(s[:3])    # 取索引0到2的值，输出abc
-print(s[-4:-1]) # 取反向索引-2到-4的值，输出def
+print(s[-4:-1])  # 取反向索引-2到-4的值，输出def
 print(s[-4:])   # 取反向索引-1到-4的值，输出defg
 print(s[:])     # 取整个字符串的值，输出abcdefg
-print(s[0:5:2]) # 输出ace
+print(s[0:5:2])  # 输出ace
 print(s[::3])   # 输出adg
 print(s[::-2])  # 输出geca
 print(s[-5:-1:2])    # 输出ce
 # print(s[-5:-1:-2])  这样写输出的是空行
 
 # 切片原则适用于所有序列
-browsers = [360,'Google','Firefox','IE']
+browsers = [360, 'Google', 'Firefox', 'IE']
 print(browsers[0:2])   # 输出[360,'Google']
 print(browsers[:2])    # 输出[360,'Google']
-print(browsers[-2:-1]) # 输出['Firefox']
+print(browsers[-2:-1])  # 输出['Firefox']
 print(browsers[-2:])   # 输出['Firefox','IE']
 print(browsers[:])     # 输出[360,'Google','Firefox','IE']
-print(browsers[0:4:2]) # 输出[360,'Firefox']
+print(browsers[0:4:2])  # 输出[360,'Firefox']
 print(browsers[::-2])  # 输出['IE'，'Google']
-title = ('name','age','sex','ddress','phone')
+title = ('name', 'age', 'sex', 'ddress', 'phone')
 print(title[:2])       # 输出('name','age')
 print(title[:])        # 输出('name','age','sex','ddress','phone')
 print(title[0:4:2])    # 输出('name','sex')
 print(title[::-3])     # 输出（'phone','age'）
-r = range(1,10)
+r = range(1, 10)
 print(r[:5])           # 输出range(1:6)
 print(r[5:])           # 输出range(6:10)
 print(r[:])            # 输出range(1,10)
@@ -81,15 +81,15 @@ print(r[::-4])         # range(9,0,-4)
 # 3.连接：通过使用加号(+)进行连接操作
 a = 'abc'
 b = 'def'
-c = a,b
+c = a, b
 print(a+b)   # 输出abcdef
-print(a,b)   # 输出abc def
+print(a, b)   # 输出abc def
 print(c)     # 输出('abd','def')
 print(type(c))  # 输出<class 'tuple'>
 
 # 连接原则适用于list,tuple,不适用于range()
-print(['apple','orange']+['banana','watermemon'])  # 输出['apple','orange','banana','watermemon']
-print((1,3,4)+(4,2,6))   # 输出(1,3,4,4,2,6)
+print(['apple', 'orange']+['banana', 'watermemon'])  # 输出['apple','orange','banana','watermemon']
+print((1, 3, 4)+(4, 2, 6))   # 输出(1,3,4,4,2,6)
 
 # 4.乘：用序列乘以N会生产一个新序列，即原来的序列被重复N次
 Hobby = 'badminton'
@@ -97,31 +97,31 @@ print(Hobby*3)    # 输出badmintonbadmintonbadminton
 
 # 乘原则适用于list,tuple,不适用于range()
 print(['apple']*3)  # 输出['apple', 'apple', 'apple']
-print((1,2)*3)      # 输出(1, 2, 1, 2, 1, 2)
+print((1, 2)*3)      # 输出(1, 2, 1, 2, 1, 2)
 
 # 5.成员资格：in/not in 用来判断一个值是否在序列中，在则返回True,不在则返回False.
-member ='Lily,Lucy,Jack'
-print('Lily' in member) # 返回True
-print('lily' in member) # 返回False,因为区分大小写
-print('TOM' not in member) # 返回True
-print('Jack' not in member) # 返回False
+member = 'Lily,Lucy,Jack'
+print('Lily' in member)  # 返回True
+print('lily' in member)  # 返回False,因为区分大小写
+print('TOM' not in member)  # 返回True
+print('Jack' not in member)  # 返回False
 
 # 成员资格原则适用于所有序列
-print(1 in [1,2,3])          # 返回True
-print(8 in ['a','b'])        # 返回False
-print('a' in ('a','b'))      # 返回True
-print('a' in ('abc','def'))  # 返回False
-print(1 in range(0,4))        # 返回True
-print(10 in range(1,5))       # 返回False
+print(1 in [1, 2, 3])          # 返回True
+print(8 in ['a', 'b'])        # 返回False
+print('a' in ('a', 'b'))      # 返回True
+print('a' in ('abc', 'def'))  # 返回False
+print(1 in range(0, 4))        # 返回True
+print(10 in range(1, 5))       # 返回False
 
 # 6.计算序列长度：len()
 shoes = 'vans,nike,adidas'
 print(len(shoes))  # 输出16
 
 # 计算长度方法适用于所有序列
-print(len([1,3,4]))         # 输出3
-print(len(('a','b','c')))   # 输出3
-print(len(range(1,10)))     # 输出9
+print(len([1, 3, 4]))         # 输出3
+print(len(('a', 'b', 'c')))   # 输出3
+print(len(range(1, 10)))     # 输出9
 
 # 7.最大值 max()
 phone = 'vivo,apple,huawei'
@@ -130,22 +130,22 @@ print(max(phone))  # 输出w
 print(max(num))    # 输出9
 
 # 最大值 max()适用于所有序列（数据类型相同的序列）
-print(max([1,2,3]))           # 输出3
-print(max(['a','b','c',':'])) # 输出c
-print(max((1,3,4)))           # 输出4
+print(max([1, 2, 3]))           # 输出3
+print(max(['a', 'b', 'c', ':']))  # 输出c
+print(max((1, 3, 4)))           # 输出4
 # print(max(('a','b',1))) 报错，数字和字母不能比大小
-print(max(range(1,10)))       # 输出9
+print(max(range(1, 10)))       # 输出9
 
 # 8.最小值 min()
 print(min(phone))  # 输出,
 print(min(num))    # 输出0
 
 # 最小值 min()适用于所有序列（数据类型相同的序列）
-print(min([1,2,4]))        # 输出1
-print(min(['x','r']))      # 输出r
-print(min((1,3)))          # 输出1
-print(min(('a','y','o')))  # 输出a
-print(min(range(5,19)))    # 输出5
+print(min([1, 2, 4]))        # 输出1
+print(min(['x', 'r']))      # 输出r
+print(min((1, 3)))          # 输出1
+print(min(('a', 'y', 'o')))  # 输出a
+print(min(range(5, 19)))    # 输出5
 
 # 字符串有很多内建函数，在此列出常用的几个
 # 1.string.capitalize() 把字符串的第一个字母大写
@@ -170,12 +170,12 @@ print(min(range(5,19)))    # 输出5
 # 如果num指定，则替换不超过num次
 print('apple'.capitalize())  # 输出Apple
 print('apple'.center(10))    # 输出   Apple
-print('apple,orange'.count('a')) # 输出2
+print('apple,orange'.count('a'))  # 输出2
 print('apple'.endswith('e'))     # 返回True
 print('apple'.find('p'))         # 返回1
 print('apple'.find('r'))         # 返回-1
-print('orangesoranges'.index('s')) # 返回6
-print('orangesoranges'.index('o')) # 返回0
+print('orangesoranges'.index('s'))  # 返回6
+print('orangesoranges'.index('o'))  # 返回0
 print('apple23'.isalnum())         # 返回True
 print('a+'.isalnum())              # 返回False
 print('apple'.isalpha())           # 返回True
@@ -191,7 +191,7 @@ print('  '.isspace())              # 返回True
 print('AB'.isupper())              # 返回True
 print('AB'.lower())                # 输出ab
 print('  dec'.lstrip())            # 输出dec
-print('apple,orange'.replace('a','A'))  # 输出Apple,orAnge
+print('apple,orange'.replace('a', 'A'))  # 输出Apple,orAnge
 
 '''
 正则表达式的元字符和语法：
@@ -236,19 +236,19 @@ span()   返回一个元组包含匹配（开始，结束）的位置
 7.re.compile(pattern) 可以把正则表达式编译成一个表达式对像，可以把常用的表达式编译成对象，可以提高效率
 '''
 
-import re
-print(re.match(r'a','abc'))  # <_sre.SRE_Match object; span=(0, 1), match='a'>
-print(re.match(r'a','abc').string)  # 输出abc
-print(re.match(r'q','abc'))    # 返回None
-print(re.sub(r'a','A','appleappleapple'))  # 返回AppleAppleApple
-print(re.sub(r'124','0','apple'))          # 返回apple
-print(re.findall(r'\d','apple124apple123'))  # 返回['1', '2', '4', '1', '2', '3']
-print(re.findall(r'\n','sdk'))    # 返回[]
-print(re.search(r'b','abcabc').string)     # 返回abcabc
-print(re.search(r'b','abcabc').start())    # 返回1
-print(re.search(r'ab','abcabc').end())     # 返回2
-print(re.search(r'ab','abcabc').group())   # 返回ab
-print(re.split(r'b','abcabc'))             # 返回['a', 'ca', 'c']
+
+print(re.match(r'a', 'abc'))  # <_sre.SRE_Match object; span=(0, 1), match='a'>
+print(re.match(r'a', 'abc').string)  # 输出abc
+print(re.match(r'q', 'abc'))    # 返回None
+print(re.sub(r'a', 'A', 'appleappleapple'))  # 返回AppleAppleApple
+print(re.sub(r'124', '0', 'apple'))          # 返回apple
+print(re.findall(r'\d', 'apple124apple123'))  # 返回['1', '2', '4', '1', '2', '3']
+print(re.findall(r'\n', 'sdk'))    # 返回[]
+print(re.search(r'b', 'abcabc').string)     # 返回abcabc
+print(re.search(r'b', 'abcabc').start())    # 返回1
+print(re.search(r'ab', 'abcabc').end())     # 返回2
+print(re.search(r'ab', 'abcabc').group())   # 返回ab
+print(re.split(r'b', 'abcabc'))             # 返回['a', 'ca', 'c']
 p = re.compile(r'b')
 print(p.split('abcabc'))                   # 返回['a', 'ca', 'c']
 
@@ -267,15 +267,15 @@ print(p.split('abcabc'))                   # 返回['a', 'ca', 'c']
 11.list.copy()
 '''
 
-L1 = [1,3]
-L2 = ['a','b','c','d','a']
-L1.append([4,5])
+L1 = [1, 3]
+L2 = ['a', 'b', 'c', 'd', 'a']
+L1.append(5)
 print(L1)            # 输出[1, 3, [4, 5]]
-print(L2.count('a')) # 输出2
-L1.extend([4,5])
+print(L2.count('a'))  # 输出2
+L1.extend([4, 5])
 print(L1)            # 输出[1, 3, [4, 5], 4, 5]
-print(L2.index('c')) # 输出2
-L2.insert(0,'Q')
+print(L2.index('c'))  # 输出2
+L2.insert(0, 'Q')
 print(L2)            # 输出['Q', 'a', 'b', 'c', 'd', 'a']
 L2.pop()
 print(L2)            # 输出['Q', 'a', 'b', 'c', 'd']
@@ -291,13 +291,11 @@ L3 = L1.copy()
 print(L3)            # 输出[1, 3, [4, 5], 4, 5]
 
 # 打印九九乘法表
-for i in range(1,10):
-    for j in range(1,i+1):
-        print("{}*{}={}" .format(i,j,i*j),end=" ")
+for i in range(1, 10):
+    for j in range(1, i+1):
+        print("{}*{}={}" .format(i, j, i*j), end=" ")
     print("\n")
 
 # 循环输出26个字母(并将字母的Ascall码同时输出)
-for alpha in range(ord('a'),ord('z')+1):
-    print(alpha,chr(alpha))
-
-
+for alpha in range(ord('a'), ord('z')+1):
+    print(alpha, chr(alpha))
