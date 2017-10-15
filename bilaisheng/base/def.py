@@ -11,11 +11,6 @@ def  helloOne(str):
 
 helloOne("一个带参数的字符串！")
 
-
-
-
-
-
 print("")
 
 #带有默认值的参数
@@ -26,7 +21,7 @@ def helloTwo(age = 35):
 helloTwo(50);
 
 def area(width=50,height=60):
-    return width*height
+    return width * height
 
 print(area(200,200))
 
