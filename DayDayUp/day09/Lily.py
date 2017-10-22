@@ -68,6 +68,8 @@ for arg in sys.argv[1:]:
     else:
         print(arg, 'has', len(f.readlines()), 'lines')
         f.close()
+
+
 # 使用 else 子句比把所有的语句都放在
 # try 子句里面要好，这样可以避免一些意想不到的、而except又没有捕获的异常。
 # 异常处理并不仅仅处理那些直接发生在try子句中的异常，而且还能处理子句中调用的函数（甚至间接调用的函数）里抛出的异常。
@@ -108,10 +110,14 @@ class MyError(Exception):
 
     def __str__(self):
         return repr(self.value)
+
+
 try:
-    raise MyError(2*2)
+    raise MyError(2 * 2)
 except MyError as e:
     print('My exception occurred, value:', e.value)
+
+
 # 输出：My exception occurred, value: 4
 
 # 程序能一次写完并正常运行的概率很小，基本不超过1%。
@@ -135,13 +141,16 @@ except MyError as e:
 # 断言
 #
 # 凡是用print()来辅助查看的地方，都可以用断言（assert）来替代：
-def foo(s):
-    n = int(s)
+def foo(ss):
+    n = int(ss)
     assert n != 0, 'n is zero!'
     return 10 / n
 
+
 def main():
     foo('0')
+
+
 # main()
 
 # 程序中如果到处充斥着assert，和print()相比也好不到哪去。
@@ -193,15 +202,14 @@ def main():
 
 # 如果你经常阅读Python的官方文档，可以看到很多文档都有示例代码。
 # 可以把这些示例代码在Python的交互式环境下输入并执行，结果与文档中的示例代码显示的一致。
-#
-# 这些代码与其他说明可以写在注释中，然后，由一些工具来自动生成文档。既然这些代码本身就可以粘贴出来直接运行，那么，可不可以自动执行写在注释中的这些代码呢？
-#
+# 这些代码与其他说明可以写在注释中，然后，由一些工具来自动生成文档。
+# 既然这些代码本身就可以粘贴出来直接运行，那么，可不可以自动执行写在注释中的这些代码呢？
 # 答案是肯定的。
 #
 # 当我们编写注释时，如果写上这样的注释：
 
 def abs(n):
-    '''
+    """
     Function to get absolute value of number.
 
     Example:
@@ -212,8 +220,10 @@ def abs(n):
     1
     >>> abs(0)
     0
-    '''
+    """
     return n if n >= 0 else (-n)
+
+
 # 无疑更明确地告诉函数的调用者该函数的期望输入和输出。
 #
 # 并且，Python内置的“文档测试”（doctest）模块可以直接提取注释中的代码并执行测试。
@@ -221,7 +231,7 @@ def abs(n):
 # doctest严格按照Python交互式命令行的输入和输出来判断测试结果是否正确。只有测试异常的时候，可以用...表示中间一大段烦人的输出。
 # 让我们用doctest来测试上次编写的Dict类：
 class Dict(dict):
-    '''
+    """
     Simple dict but also support access as x.y style.
 
     >>> d1 = Dict()
@@ -242,7 +252,8 @@ class Dict(dict):
     Traceback (most recent call last):
         ...
     AttributeError: 'Dict' object has no attribute 'empty'
-    '''
+    """
+
     def __init__(self, **kw):
         super(Dict, self).__init__(**kw)
 
@@ -255,6 +266,8 @@ class Dict(dict):
     def __setattr__(self, key, value):
         self[key] = value
 
-if __name__=='__main__':
+
+if __name__ == '__main__':
     import doctest
+
     doctest.testmod()
